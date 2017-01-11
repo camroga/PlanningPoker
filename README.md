@@ -7,6 +7,15 @@ Dependencies included
 
 Requirements
 ------------
+- Java Virtual Machine
+- NodeJs
+- Npm
+
+Install
+-------
+- [Node](https://nodejs.org/)
+- npm install -g nativescript
 
 Building
 --------
+- tns livesync ios --emulator --watch
