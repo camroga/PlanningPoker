@@ -1,4 +1,4 @@
-# Scrum Poker
+# Planning Poker
 
 This project was generated with [Native Script](https://www.nativescript.org/)
 
