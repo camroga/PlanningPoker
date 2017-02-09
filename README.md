@@ -19,3 +19,4 @@ Install
 Building
 --------
 - tns livesync ios --emulator --watch
+- tns livesync android --emulator --watch
