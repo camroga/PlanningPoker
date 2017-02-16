@@ -1,4 +1,4 @@
-# Scrum Poker
+# Planning Poker
 
 This project was generated with [Native Script](https://www.nativescript.org/)
 
@@ -19,3 +19,4 @@ Install
 Building
 --------
 - tns livesync ios --emulator --watch
+- tns livesync android --emulator --watch
