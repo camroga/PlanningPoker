@@ -3,6 +3,7 @@ import { HttpModule, JsonpModule } from '@angular/http';
 import { NativeScriptModule } from "nativescript-angular/nativescript.module";
 
 import { CardComponent } from "./card/card.component";
+import { CardDb } from './db/db.service';
 import { FooterComponent } from "./footer/footer.component";
 import { HeaderComponent } from "./header/header.component";
 import { AppComponent } from "./app.component";
@@ -17,7 +18,7 @@ import { CardService } from './card/card.service';
       FooterComponent ],
     bootstrap: [AppComponent],
     imports: [NativeScriptModule, HttpModule, JsonpModule],
-    providers: [CardService],
+    providers: [CardService, CardDb],
     schemas: [NO_ERRORS_SCHEMA]
 })
 export class AppModule { }

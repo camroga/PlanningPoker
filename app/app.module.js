@@ -3,6 +3,7 @@ var core_1 = require("@angular/core");
 var http_1 = require('@angular/http');
 var nativescript_module_1 = require("nativescript-angular/nativescript.module");
 var card_component_1 = require("./card/card.component");
+var db_service_1 = require('./db/db.service');
 var footer_component_1 = require("./footer/footer.component");
 var header_component_1 = require("./header/header.component");
 var app_component_1 = require("./app.component");
@@ -19,7 +20,7 @@ var AppModule = (function () {
                 footer_component_1.FooterComponent],
             bootstrap: [app_component_1.AppComponent],
             imports: [nativescript_module_1.NativeScriptModule, http_1.HttpModule, http_1.JsonpModule],
-            providers: [card_service_1.CardService],
+            providers: [card_service_1.CardService, db_service_1.CardDb],
             schemas: [core_1.NO_ERRORS_SCHEMA]
         }), 
         __metadata('design:paramtypes', [])

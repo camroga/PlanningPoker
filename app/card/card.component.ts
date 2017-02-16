@@ -2,9 +2,6 @@ import { Component } from '@angular/core';
 import { CardService } from './card.service';
 import view = require("ui/core/view");
 import label = require("ui/label");
-import { EventData } from "data/observable";
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/Rx';
 
 @Component({
   selector: 'card-app',
@@ -20,13 +17,7 @@ export class CardComponent {
   
   loadCards(eventData) {
     this.name = "Planning Poker";
-
-    var cards;
-    this.cardService.getCards("card.json", "default")
-      .then(function(result:string[]){
-        cards = result;
-    });
-    console.log(cards);
+    this.cards = this.cardService.getCards("default");
   }
 }
 

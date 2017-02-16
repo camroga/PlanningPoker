@@ -3,7 +3,8 @@
 <Label [text]="name"></Label>
 <!-- <Button text="loadCards" style="background-color: green;"></Button> -->
 <StackLayout *ngFor="let card of cards" class="list-group-item">
-    <Label [text]="card"></Label>
+    <Label [text]="card.card"></Label>
+    <Label [text]="card.package"></Label>
 </StackLayout>
 
 <StackLayout>

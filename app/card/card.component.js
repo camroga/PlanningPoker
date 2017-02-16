@@ -1,7 +1,6 @@
 "use strict";
 var core_1 = require('@angular/core');
 var card_service_1 = require('./card.service');
-require('rxjs/Rx');
 var CardComponent = (function () {
     function CardComponent(cardService) {
         this.cardService = cardService;
@@ -9,12 +8,7 @@ var CardComponent = (function () {
     }
     CardComponent.prototype.loadCards = function (eventData) {
         this.name = "Planning Poker";
-        var cards;
-        this.cardService.getCards("card.json", "default")
-            .then(function (result) {
-            cards = result;
-        });
-        console.log(cards);
+        this.cards = this.cardService.getCards("default");
     };
     CardComponent = __decorate([
         core_1.Component({
