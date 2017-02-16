@@ -1,0 +1,9 @@
+.card {
+	width:352;
+	heigth: 160;
+}
+
+#login-button[testAttr='flower'] { background-color: blue; }
+[testAttr] {color: white;}
+
+StackLayout Button { background-color: blue; }

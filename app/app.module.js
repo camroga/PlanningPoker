@@ -1,10 +1,12 @@
 "use strict";
 var core_1 = require("@angular/core");
+var http_1 = require('@angular/http');
 var nativescript_module_1 = require("nativescript-angular/nativescript.module");
-var scrum_card_component_1 = require("./scrum-card/scrum-card.component");
+var card_component_1 = require("./card/card.component");
 var footer_component_1 = require("./footer/footer.component");
 var header_component_1 = require("./header/header.component");
 var app_component_1 = require("./app.component");
+var card_service_1 = require('./card/card.service');
 var AppModule = (function () {
     function AppModule() {
     }
@@ -13,10 +15,11 @@ var AppModule = (function () {
             declarations: [
                 app_component_1.AppComponent,
                 header_component_1.HeaderComponent,
-                scrum_card_component_1.ScrumCardComponent,
+                card_component_1.CardComponent,
                 footer_component_1.FooterComponent],
             bootstrap: [app_component_1.AppComponent],
-            imports: [nativescript_module_1.NativeScriptModule],
+            imports: [nativescript_module_1.NativeScriptModule, http_1.HttpModule, http_1.JsonpModule],
+            providers: [card_service_1.CardService],
             schemas: [core_1.NO_ERRORS_SCHEMA]
         }), 
         __metadata('design:paramtypes', [])
