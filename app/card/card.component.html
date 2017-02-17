@@ -1,12 +1,6 @@
-<!-- <ListView items="{{cards}}" /> -->
-<!-- <Image class="card" src="~/images/default/card0.png"></Image> -->
-<Label [text]="name"></Label>
-<!-- <Button text="loadCards" style="background-color: green;"></Button> -->
-<StackLayout *ngFor="let card of cards" class="list-group-item">
-    <Label [text]="card.card"></Label>
-    <Label [text]="card.package"></Label>
-</StackLayout>
-
+<GridLayout columns="auto,*,*" rows="auto,auto,auto" width="150" height="100" *ngFor="let card of cards">
+	<Image row="{{card.x}}" col="{{card.y}}" width="150" height="150" [src]='"~/images/default/"+card.card+".png"'></Image>
+</GridLayout>
 <StackLayout>
 	<Button class="btn btn-primary btn-active" id="button" text="Tap me!" (tap)="loadCards()"></Button>
 </StackLayout>

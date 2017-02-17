@@ -4,10 +4,8 @@ var card_service_1 = require('./card.service');
 var CardComponent = (function () {
     function CardComponent(cardService) {
         this.cardService = cardService;
-        this.name = "camilo";
     }
     CardComponent.prototype.loadCards = function (eventData) {
-        this.name = "Planning Poker";
         this.cards = this.cardService.getCards("default");
     };
     CardComponent = __decorate([

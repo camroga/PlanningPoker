@@ -13,7 +13,8 @@ export class CardDb {
             Sqlite.copyDatabase("PLANING_POKER.db");
         }
         (new Sqlite("PLANING_POKER.db")).then(db => {
-            db.execSQL("CREATE TABLE IF NOT EXISTS CARD (id INTEGER PRIMARY KEY AUTOINCREMENT, CARD TEXT, PACKAGE TEXT)").then(id => {
+            db.execSQL("CREATE TABLE IF NOT EXISTS CARD (ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, CARD TEXT NOT NULL UNIQUE, "+
+                "PACKAGE INTEGER NOT NULL, X INTEGER NOT NULL, Y INTEGER NOT NULL)").then(id => {
                 this.database = db;
             }, error => {
                 console.log("CREATE TABLE ERROR", error);
@@ -24,19 +25,25 @@ export class CardDb {
     }
 
     public fetch(packageCards) {
-        var sql: string = "SELECT CARD.CARD, PACKAGE.PACKAGE FROM CARD ";
-        if(packageCards != null) {
-            sql += "INNER JOIN PACKAGE ON PACKAGE.ID = CARD.PACKAGE";
-        }
-        this.database.all("SELECT * FROM CARD").then(rows => {
+        var sql: string = "SELECT CARD.CARD, CARD.X, CARD.Y, PACKAGE.PACKAGE FROM CARD INNER JOIN PACKAGE ON PACKAGE.ID = CARD.PACKAGE ORDER BY CARD.X;";
+        
+        console.log(sql);
+        this.database.all(sql).then(rows => {
             this.cards = [];
             for(var row in rows) {
                 this.cards.push({
                     "card": rows[row][0],
-                    "package": rows[row][1]
+                    "x": rows[row][1],
+                    "y": rows[row][2],
+                    "package": rows[row][3]
                 });
                 console.log(rows[row][0]);
+                console.log("------------->");
                 console.log(rows[row][1]);
+                console.log("------------->");
+                console.log(rows[row][2]);
+                console.log("------------->");
+                console.log(rows[row][3]);
             }
         }, error => {
             console.log("SELECT ERROR", error);

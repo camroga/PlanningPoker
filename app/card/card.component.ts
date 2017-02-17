@@ -11,12 +11,10 @@ import label = require("ui/label");
 export class CardComponent {
 
   private cards: string[];
-  private name: string = "camilo";
 
-  constructor(private cardService: CardService) {}
+  constructor(private cardService: CardService) { }
   
   loadCards(eventData) {
-    this.name = "Planning Poker";
     this.cards = this.cardService.getCards("default");
   }
 }
