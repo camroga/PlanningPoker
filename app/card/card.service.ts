@@ -11,6 +11,5 @@ export class CardService {
 	getCards(packageCards: string) {
 		this.dataBase.fetch(packageCards);
 		return this.dataBase.getCards();
-		
 	}
 }

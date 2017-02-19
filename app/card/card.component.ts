@@ -13,9 +13,8 @@ export class CardComponent {
   private cards: string[];
 
   constructor(private cardService: CardService) { }
-  
-  loadCards(eventData) {
-    this.cards = this.cardService.getCards("default");
+
+  public loadCards(eventData) {
+  	this.cards = this.cardService.getCards("default");
   }
 }
-
