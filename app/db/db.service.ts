@@ -8,14 +8,17 @@ export class CardDb {
     private database: any;
     private cards: Array<any>;
 
-    public constructor() {
+    public constructor() {}
+
+    public createTable() {
         if (!Sqlite.exists("PLANING_POKER.db")) {
             Sqlite.copyDatabase("PLANING_POKER.db");
         }
-        (new Sqlite("PLANING_POKER.db")).then(db => {
-            db.execSQL("CREATE TABLE IF NOT EXISTS CARD (ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, CARD TEXT NOT NULL UNIQUE, "+
+        return (new Sqlite("PLANING_POKER.db")).then(db => {
+            return db.execSQL("CREATE TABLE IF NOT EXISTS CARD (ID INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, CARD TEXT NOT NULL UNIQUE, "+
                 "PACKAGE INTEGER NOT NULL, X INTEGER NOT NULL, Y INTEGER NOT NULL)").then(id => {
                 this.database = db;
+                return true;
             }, error => {
                 console.log("CREATE TABLE ERROR", error);
             });
@@ -27,8 +30,7 @@ export class CardDb {
     public fetch(packageCards) {
         var sql: string = "SELECT CARD.CARD, CARD.X, CARD.Y, PACKAGE.PACKAGE FROM CARD INNER JOIN PACKAGE ON PACKAGE.ID = CARD.PACKAGE ORDER BY CARD.X;";
         
-        console.log(sql);
-        this.database.all(sql).then(rows => {
+        return this.database.all(sql).then(rows => {
             this.cards = [];
             for(var row in rows) {
                 this.cards.push({
@@ -37,20 +39,10 @@ export class CardDb {
                     "y": rows[row][2],
                     "package": rows[row][3]
                 });
-                console.log(rows[row][0]);
-                console.log("------------->");
-                console.log(rows[row][1]);
-                console.log("------------->");
-                console.log(rows[row][2]);
-                console.log("------------->");
-                console.log(rows[row][3]);
             }
+            return this.cards;
         }, error => {
             console.log("SELECT ERROR", error);
         });
     }
- 
-     public getCards() {
-         return this.cards;
-     }
 }

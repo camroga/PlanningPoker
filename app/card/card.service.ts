@@ -9,7 +9,12 @@ export class CardService {
 	constructor(private dataBase : CardDb) {}
 
 	getCards(packageCards: string) {
-		this.dataBase.fetch(packageCards);
-		return this.dataBase.getCards();
+		return this.dataBase.createTable().then(res => {
+			if(res){
+				return this.dataBase.fetch(packageCards).then(cards => {
+					return cards;
+				});
+			}
+		});
 	}
 }

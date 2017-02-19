@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CardService } from './card.service';
 import view = require("ui/core/view");
 import label = require("ui/label");
@@ -8,13 +8,15 @@ import label = require("ui/label");
   templateUrl: './card/card.component.html',
   styleUrls: ["/card.component.css"]
 })
-export class CardComponent {
+export class CardComponent implements OnInit{
 
   private cards: string[];
 
   constructor(private cardService: CardService) { }
 
-  public loadCards(eventData) {
-  	this.cards = this.cardService.getCards("default");
+  public ngOnInit() {
+  	this.cardService.getCards("default").then(cards => {
+      this.cards = cards;
+    });
   }
 }

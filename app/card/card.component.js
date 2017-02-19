@@ -5,8 +5,11 @@ var CardComponent = (function () {
     function CardComponent(cardService) {
         this.cardService = cardService;
     }
-    CardComponent.prototype.loadCards = function (eventData) {
-        this.cards = this.cardService.getCards("default");
+    CardComponent.prototype.ngOnInit = function () {
+        var _this = this;
+        this.cardService.getCards("default").then(function (cards) {
+            _this.cards = cards;
+        });
     };
     CardComponent = __decorate([
         core_1.Component({

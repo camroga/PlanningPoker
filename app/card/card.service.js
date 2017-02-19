@@ -7,8 +7,14 @@ var CardService = (function () {
         this.dataBase = dataBase;
     }
     CardService.prototype.getCards = function (packageCards) {
-        this.dataBase.fetch(packageCards);
-        return this.dataBase.getCards();
+        var _this = this;
+        return this.dataBase.createTable().then(function (res) {
+            if (res) {
+                return _this.dataBase.fetch(packageCards).then(function (cards) {
+                    return cards;
+                });
+            }
+        });
     };
     CardService = __decorate([
         core_1.Injectable(), 

@@ -1,7 +1,4 @@
 
-<GridLayout columns="*, *, *" rows="*, *, *" height="312">
+<GridLayout columns="*, *, *" rows="*, *, *" height="370">
 	<Image *ngFor="let card of cards" row="{{card.x}}" col="{{card.y}}" [src]='"~/images/default/"+card.card+".png"'></Image>
 </GridLayout>
-<StackLayout>
-	<Button class="btn btn-primary btn-active" id="button" text="Tap me!" (tap)="loadCards()"></Button>
-</StackLayout>
